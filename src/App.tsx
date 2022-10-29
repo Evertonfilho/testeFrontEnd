@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable array-callback-return */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-unused-vars */
+import { useEffect, useState } from "react"
+import axios from "axios"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+type BooksData = {
+  startsWith(search: string): unknown
+  id:string,
+  title:string,
+  subtitle:string,
+  authors:string,
+  publisher:string,
+  description:string,
+  kind:string,
 }
 
-export default App;
+export function App(){
+  
+  const [books, setBooks] = useState<BooksData[]>([])
+  const [search,setSearch] = useState('Java')
+  const [keyApi, setKeyApi] = useState('AIzaSyCEw67iaWQJyudnMlBrjhLnx9WvgnW18qU')
+
+
+  const handleSearch = () =>{
+    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=${keyApi}`)
+    .then(response => {
+      setBooks(response.data)
+      console.log(response.data)
+    })
+  }
+
+  return(
+    <>
+    <h1>Google Books</h1>
+    <input 
+    type="text"
+    placeholder="Digite o livro que deseja"
+    onChange={(e) => setSearch(e.target.value)}
+    />
+    <button onClick={handleSearch} >Buscar</button>
+    </>
+  )
+}
