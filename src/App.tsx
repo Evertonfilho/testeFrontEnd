@@ -7,8 +7,8 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 
 type BooksData = {
-  startsWith(search: string): unknown
   id:string,
+  items:string[],
   title:string,
   subtitle:string,
   authors:string,
@@ -20,12 +20,13 @@ type BooksData = {
 export function App(){
   
   const [books, setBooks] = useState<BooksData[]>([])
-  const [search,setSearch] = useState('Java')
+  const [search,setSearch] = useState('')
+  const [inauthor,setInauthor] = useState('')
   const [keyApi, setKeyApi] = useState('AIzaSyCEw67iaWQJyudnMlBrjhLnx9WvgnW18qU')
 
 
   const handleSearch = () =>{
-    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=${keyApi}`)
+    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${search}${inauthor}&key=${keyApi}`)
     .then(response => {
       setBooks(response.data)
       console.log(response.data)
@@ -39,6 +40,11 @@ export function App(){
     type="text"
     placeholder="Digite o livro que deseja..."
     onChange={(e) => setSearch(e.target.value)}
+    />
+    <input 
+    type="text"
+    placeholder="Digite o Autor do livro..."
+    onChange={(e) => setInauthor(e.target.value)}
     />
     <button onClick={handleSearch} >Buscar</button>
     </>
