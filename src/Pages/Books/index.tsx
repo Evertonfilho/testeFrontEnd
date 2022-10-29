@@ -2,7 +2,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Key, useState } from "react"
 import axios from "axios"
-import {CardBook, CardBooks, Container} from './styles' 
+import {Container} from './styles' 
+import { Card } from "../../components/CardBooks/Card"
+import { CardBooks } from "../../components/CardBooks"
+
 
 
 type BooksData = {
@@ -23,7 +26,7 @@ export function Books(){
     const [books, setBooks] = useState<BooksData[]>([])
     const [search,setSearch] = useState('')
     const [inauthor,setInauthor] = useState('')
-  
+
   
     const handleSearch = () =>{
       const keyApi = 'AIzaSyCEw67iaWQJyudnMlBrjhLnx9WvgnW18qU'
@@ -36,19 +39,29 @@ export function Books(){
     }
   
     return(
+      <>
       <Container>
       <h1>Google Books</h1>
-      <input 
+      <div className="Header">
+      <input
       type="text"
       placeholder="Digite o livro que deseja..."
-      onChange={(e) => setSearch(e.target.value)}
-      />
-      <input 
-      type="text"
-      placeholder="Digite o Autor do livro..."
-      onChange={(e) => setInauthor(e.target.value)}
-      />
-      <button onClick={handleSearch} >Buscar</button>
+      onChange={(e) => setSearch(e.target.value)} />
+      <input
+        type="text"
+        placeholder="Digite o Autor do livro..."
+        onChange={(e) => setInauthor(e.target.value)} />
+        <button onClick={handleSearch}>Buscar</button>
+      </div>
+      </Container>
+      <CardBooks/>
+      </>
+  )
+}
+
+
+/* 
+
       <CardBooks>
       <ul>
         {books.map((book:any , index: Key | null | undefined) => {
@@ -78,11 +91,4 @@ export function Books(){
         })}
       </ul>
       </CardBooks>
-      </Container>
-  )
-}
-
-/*
-
-
-      */
+*/

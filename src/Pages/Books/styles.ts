@@ -1,17 +1,42 @@
 import styled from "styled-components";
 
-export const Container = styled.main`
- display: flex;
- flex-wrap: wrap;
+export const Container = styled.header`
 
- width: 100%;
- height: 100%;
-`
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: var(--blue-secundary);
 
-export const CardBooks = styled.div`
+    div{
+      background: var(--blue-secundary);
+    }
 
-`
+    h1{
+      background: var(--blue-secundary);
+      color: white;
+    }
 
-export const CardBook = styled.div`
+    input{
+      width: 230px;
+      height:50px;
+      margin: 5px;
+      font-size: 16px;
+      font-weight:bold;
+      background: var(--blue-secundary);
+      border: var(--blue-secundary);
+      color: white;
+    }
+
+    button{
+      width: 180px;
+      height: 30px;
+      background: white;
+      border: white;
+      border-radius: 10px;
+      font-family: 'Quicksand',sans-serif;
+      font-size: 18px;
+    }
 
 `
