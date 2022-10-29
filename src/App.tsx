@@ -37,7 +37,7 @@ export function App(){
     <h1>Google Books</h1>
     <input 
     type="text"
-    placeholder="Digite o livro que deseja"
+    placeholder="Digite o livro que deseja..."
     onChange={(e) => setSearch(e.target.value)}
     />
     <button onClick={handleSearch} >Buscar</button>
