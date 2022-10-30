@@ -54,35 +54,36 @@ export function Books(){
       </div>
       </Container>
       <CardBooks>
-        <div>
         {books.map((book:any , index: Key | null | undefined) => {
           try{
             return(
+              <section key={index}>
               <Card 
-              index={index} 
-              image={book.volumeInfo.imageLinks.thumbnail}
-              title={book.volumeInfo.title}
-              author={book.volumeInfo.authors}
-              description={book.volumeInfo.description}
+                  image={book.volumeInfo.imageLinks.thumbnail}
+                  title={book.volumeInfo.title}
+                  author={book.volumeInfo.authors}
+                  description={book.volumeInfo.description}
               /> 
+              </section>
             )
           }
           catch(err){
+            console.log(err)
             return(
+              <section key={index}>
               <Card 
-              index={index} 
               image={"assets/semImagem.png"}
               title={book.volumeInfo.title}
               author={book.volumeInfo.authors}
               description={book.volumeInfo.description}
               /> 
+              </section>
             )
           }
 
 
           
         })}
-        </div>
       </CardBooks>
       </>
   )

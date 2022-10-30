@@ -43,10 +43,9 @@ export const Container = styled.header`
 
 
 export const CardBooks = styled.main`
-            display: grid;
-            grid-template-columns: auto auto auto auto;
-            justify-content: space-between;
-            row-gap: 30px;
-            column-gap: 30px;
-            padding: 30px 50px;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 20px;
+  background: var(--blue-secundary);
+  margin: 20px;
 `
