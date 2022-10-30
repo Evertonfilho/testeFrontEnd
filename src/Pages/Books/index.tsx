@@ -2,9 +2,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Key, useState } from "react"
 import axios from "axios"
-import {Container} from './styles' 
-import { Card } from "../../components/CardBooks/Card"
-import { CardBooks } from "../../components/CardBooks"
+import {CardBooks, Container} from './styles' 
+import { Card } from "../../components/Card"
 
 
 
@@ -32,7 +31,7 @@ export function Books(){
       const keyApi = 'AIzaSyCEw67iaWQJyudnMlBrjhLnx9WvgnW18qU'
       axios.get(`https://www.googleapis.com/books/v1/volumes?q=${search}${inauthor}&key=${keyApi}&maxResults=40`)
       .then(response => {
-        setBooks(response.data.items)
+        setBooks(  response.data.items)
         console.log(response.data)
         console.log(response.data.volumeInfo)
       })
@@ -54,41 +53,38 @@ export function Books(){
         <button onClick={handleSearch}>Buscar</button>
       </div>
       </Container>
-      <CardBooks/>
-      </>
-  )
-}
-
-
-/* 
-
       <CardBooks>
-      <ul>
+        <div>
         {books.map((book:any , index: Key | null | undefined) => {
           try{
             return(
-              <CardBook key={index}>
-                <img src={book.volumeInfo.imageLinks.thumbnail} alt="Capa Livro" />
-                <span >{book.volumeInfo.title}</span>
-                <span > {book.volumeInfo.authors}</span>
-                <span > {book.volumeInfo.description}</span>          
-              </CardBook>
+              <Card 
+              index={index} 
+              image={book.volumeInfo.imageLinks.thumbnail}
+              title={book.volumeInfo.title}
+              author={book.volumeInfo.authors}
+              description={book.volumeInfo.description}
+              /> 
             )
           }
           catch(err){
             return(
-              <CardBook key={index}>
-                <img src="assets/semImagem.png" alt="Livro sem Imagem" />
-                <span >{book.volumeInfo.title}</span>
-                <span > {book.volumeInfo.authors}</span>
-                <span > {book.volumeInfo.description}</span>          
-              </CardBook>
+              <Card 
+              index={index} 
+              image={"assets/semImagem.png"}
+              title={book.volumeInfo.title}
+              author={book.volumeInfo.authors}
+              description={book.volumeInfo.description}
+              /> 
             )
           }
 
 
           
         })}
-      </ul>
+        </div>
       </CardBooks>
-*/
+      </>
+  )
+}
+
