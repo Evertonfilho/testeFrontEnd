@@ -3,10 +3,10 @@ import { createGlobalStyle } from 'styled-components';
 export const GlobalStyle = createGlobalStyle`
 
   :root{
-    --blue:#20202D;
-    --blue-secundary: #002141;
-    --grey: #11BF9F;
-    scroll-behavior: smooth;
+    --midnight-purple:#202C39;
+    --ivory: #283845;
+    --copper: #B8B08D;
+    --old-gold: #CFB53B;
   }
 
   html, body {
@@ -18,7 +18,7 @@ export const GlobalStyle = createGlobalStyle`
     padding:0;
     margin:0;
     box-sizing: border-box;
-    background: var(--blue);
+    background: var(--ivory);
   }
 
   body{

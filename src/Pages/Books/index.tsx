@@ -40,17 +40,27 @@ export function Books(){
     return(
       <>
       <Container>
-      <h1>Google Books</h1>
-      <div className="Header">
+      <div className="header-container">
+      <h1>World Of Books</h1>
+      <div className="inputs-header">
       <input
+      className="input-book"
       type="text"
       placeholder="Digite o livro que deseja..."
       onChange={(e) => setSearch(e.target.value)} />
       <input
+        className="input-author"
         type="text"
-        placeholder="Digite o Autor do livro..."
+        placeholder="Digite o autor do livro..."
         onChange={(e) => setInauthor(e.target.value)} />
-        <button onClick={handleSearch}>Buscar</button>
+      </div>
+
+        <button 
+        type="submit"
+        onClick={handleSearch}
+        >
+          Buscar
+        </button>
       </div>
       </Container>
       <CardBooks>
@@ -68,7 +78,6 @@ export function Books(){
             )
           }
           catch(err){
-            console.log(err)
             return(
               <section key={index}>
               <Card 

@@ -1,30 +1,32 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Container } from "./styles"
-
-type ICard ={
+import React, { useState } from "react";
+import ReactDOM from "react-dom";
+type DataCard ={
   image?:any,
   title:string[],
   author:string[],
   description:string[]
 }
 
-export const Card = ({image,title,author,description}:ICard) => {
+export const Card = ({image,title,author,description}:DataCard) => {
+
   return(
     <Container 
     className="Card"
     >
       <header className="Card-image">
       <img src={image} alt="" />
+      </header>
       <div className="Card-title">
       <h2 >{title}</h2>
+      </div>
       <div className="Card-author">
-      <span >{author}</span>
+      <span > Autor :  <p>{author}</p></span>
       </div>
+      <div className="Card-description">
+      <span > Descrição :  <p>{description}</p></span>
       </div>
-      </header>
-      <div className="Card-Description">
-      <p>{description}</p>  
-      </div>
-        
     </Container>
   )
 }
